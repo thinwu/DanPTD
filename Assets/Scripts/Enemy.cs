@@ -10,6 +10,8 @@ public class Enemy : MovingObject
     private Animator animator;
     private Transform target;
     private bool skipMove;
+    public AudioClip enemyAttack1;
+    public AudioClip enemyAttack2;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -56,6 +58,7 @@ public class Enemy : MovingObject
         //Call the LoseFood function of hitPlayer passing it playerDamage, the amount of foodpoints to be subtracted.
         hitPlayer.LoseFood(playerDamage);
 
+        SoundManager.instance.RandomizeSfx(enemyAttack1, enemyAttack2);
         //Set the attack trigger of animator to trigger Enemy attack animation.
         animator.SetTrigger("enemyAttack");
     }
